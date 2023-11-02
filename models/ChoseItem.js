@@ -1,3 +1,20 @@
+//hàm xuất ra hình tương ứng vs table
+function handleClick(event, i, classRes) {
+    const button = event.target;
+    const id = button.id.split("-")[1];
+    const resChange = document.querySelector(classRes);
+
+    const previousResult = resChange.innerHTML;
+
+    const j = +id;
+    const file = i;
+
+    let change = `<img src=${file[j]} alt="clother">`;
+    resChange.innerHTML = change;
+
+    previousResult = resChange.innerHTML;
+}
+
 // tạo table card chứa các item tương ứng
 
 function createItem(arrShow, arrItem, result) {
@@ -26,21 +43,4 @@ function createItem(arrShow, arrItem, result) {
         handleClick(event, arrItem, result);
     };
     return res;
-}
-
-//hàm xuất ra hình tương ứng vs table trên
-function handleClick(event, i, classRes) {
-    const button = event.target;
-    const id = button.id.split("-")[1];
-    const resChange = document.querySelector(classRes);
-
-    const previousResult = resChange.innerHTML;
-
-    const j = +id;
-    const file = i;
-
-    let change = `<img src=${file[j]} alt="clother">`;
-    resChange.innerHTML = change;
-
-    previousResult = resChange.innerHTML;
 }

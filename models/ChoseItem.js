@@ -4,15 +4,11 @@ function handleClick(event, i, classRes) {
     const id = button.id.split("-")[1];
     const resChange = document.querySelector(classRes);
 
-    const previousResult = resChange.innerHTML;
-
     const j = +id;
     const file = i;
 
     let change = `<img src=${file[j]} alt="clother">`;
     resChange.innerHTML = change;
-
-    previousResult = resChange.innerHTML;
 }
 
 // tạo table card chứa các item tương ứng

@@ -1,24 +1,24 @@
-//hàm xuất ra hình tương ứng vs table
-function handleClick(event, i, classRes) {
-    const button = event.target;
-    const id = button.id.split("-")[1];
-    const resChange = document.querySelector(classRes);
+//hàm xuất ra hình tương ứng vs các item trong table
+let handleClick = (event, i, classRes) => {
+  const button = event.target;
+  const id = button.id.split("-")[1];
+  const resChange = document.querySelector(classRes);
 
-    const j = +id;
-    const file = i;
+  const j = +id;
+  const file = i;
 
-    let change = `<img src=${file[j]} alt="clother">`;
-    resChange.innerHTML = change;
-}
+  let change = `<img src=${file[j]} alt="clother">`;
+  resChange.innerHTML = change;
+};
 
 // tạo table card chứa các item tương ứng
 
-function createItem(arrShow, arrItem, result) {
-    let output = "";
-    let res = [];
+let createItem = (arrShow, arrItem, result) => {
+  let output = "";
+  let res = [];
 
-    for (let i = 0; i < arrShow.length; i++) {
-        output += `
+  for (let i = 0; i < arrShow.length; i++) {
+    output += `
   <div class="card align-items-center col-4" id='item-${i}'>
             <img
               src=${arrShow[i]}
@@ -31,12 +31,12 @@ function createItem(arrShow, arrItem, result) {
           </div>
   `;
 
-        document.querySelector(".well").innerHTML = output;
-        res.push(document.querySelectorAll(".btn.btn-primary"));
-    }
-    console.log(res);
-    document.querySelector(".well").onclick = function() {
-        handleClick(event, arrItem, result);
-    };
-    return res;
-}
+    document.querySelector(".well").innerHTML = output;
+    res.push(document.querySelectorAll(".btn.btn-primary"));
+  }
+  console.log(res);
+  document.querySelector(".well").onclick = function () {
+    handleClick(event, arrItem, result);
+  };
+  return res;
+};

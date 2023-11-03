@@ -32,9 +32,9 @@ let createItem = (arrShow, arrItem, result) => {
     document.querySelector(".well").innerHTML = output;
     res.push(document.querySelectorAll(".btn.btn-primary"));
   }
-  console.log(res);
+  //console.log(res);
   document.querySelector(".well").onclick = function () {
     handleClick(event, arrItem, result);
   };
-  return res;
+  //return output;
 };

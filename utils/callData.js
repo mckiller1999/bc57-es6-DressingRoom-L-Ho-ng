@@ -1,5 +1,5 @@
 const arrList = document.querySelectorAll(".nav-item.nav-link");
-console.log(arrList);
+//console.log(arrList);
 
 for (let i in arrList) {
   arrList[i].onclick = function () {

@@ -17,7 +17,7 @@ let createItem = (arrShow, arrItem, result) => {
   let output = "";
   let res = [];
 
-  for (let i = 0; i < arrShow.length; i++) {
+  for (let i in arrShow) {
     output += `
   <div class="card align-items-center col-4" id='item-${i}'>
             <img

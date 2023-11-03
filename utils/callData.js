@@ -3,11 +3,12 @@ console.log(arrList);
 
 for (let i in arrList) {
   arrList[i].onclick = function () {
-    //dùng forEach để lọc ra các phần tử trong button
-    arrList.forEach((button) => {
+    //dùng for of để lọc ra các phần tử trong button
+    for (let button of arrList) {
       //console.log(button); => ra các btn có trong mảng arrA
       button.classList.remove("active");
-    });
+    }
+    // arrList.forEach((button) => {});
     this.classList.add("active");
 
     createItem(show[i], itemShow[i], res[i]);

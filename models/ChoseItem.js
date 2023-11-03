@@ -1,13 +1,11 @@
 //hàm xuất ra hình tương ứng vs các item trong table
-let handleClick = (event, i, classRes) => {
+let handleClick = (event, arrItemShow, classRes) => {
   const button = event.target;
+  //tách chuỗi trong id để lấy số id tương ứng
   const id = button.id.split("-")[1];
   const resChange = document.querySelector(classRes);
 
-  const j = +id;
-  const file = i;
-
-  let change = `<img src=${file[j]} alt="clother">`;
+  let change = `<img src=${arrItemShow[id]} alt="clother">`;
   resChange.innerHTML = change;
 };
 

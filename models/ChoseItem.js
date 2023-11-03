@@ -8,13 +8,10 @@ let handleClick = (event, arrItemShow, classRes) => {
   let change = `<img src=${arrItemShow[id]} alt="clother">`;
   resChange.innerHTML = change;
 };
-
 // tạo table card chứa các item tương ứng
-
 let createItem = (arrShow, arrItem, result) => {
   let output = "";
-  let res = [];
-
+  let res = document.querySelector(".well");
   for (let i in arrShow) {
     output += `
   <div class="card align-items-center col-4" id='item-${i}'>
@@ -28,13 +25,9 @@ let createItem = (arrShow, arrItem, result) => {
             </div>
           </div>
   `;
-
-    document.querySelector(".well").innerHTML = output;
-    res.push(document.querySelectorAll(".btn.btn-primary"));
   }
-  //console.log(res);
-  document.querySelector(".well").onclick = function () {
+  res.innerHTML = output;
+  res.onclick = function () {
     handleClick(event, arrItem, result);
   };
-  //return output;
 };

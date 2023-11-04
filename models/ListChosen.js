@@ -1,96 +1,18 @@
-const arrShirtShow = [
-  "/assets/images/clothes/topcloth1_show.jpg",
-  "/assets/images/clothes/topcloth2_show.jpg",
-  "/assets/images/clothes/topcloth3_show.jpg",
-  "/assets/images/clothes/topcloth4_show.jpg",
-  "/assets/images/clothes/topcloth5_show.jpg",
-  "/assets/images/clothes/topcloth6_show.jpg",
-];
-const arrPantsShow = [
-  "/assets/images/clothes/botcloth1_show.jpg",
-  "/assets/images/clothes/botcloth2_show.jpg",
-  "/assets/images/clothes/botcloth3_show.jpg",
-  "/assets/images/clothes/botcloth4_show.jpg",
-  "/assets/images/clothes/botcloth5_show.jpg",
-];
-const hairStyleShow = [
-  "/assets/images/hairstyle/hairstyle1_show.jpg",
-  "/assets/images/hairstyle/hairstyle2_show.jpg",
-  "/assets/images/hairstyle/hairstyle3_show.jpg",
-];
-const handbagShow = [
-  "/assets/images/handbags/handbag1_show.jpg",
-  "/assets/images/handbags/handbag2_show.jpg",
-  "/assets/images/handbags/handbag3_show.jpg",
-];
-const necklaceShow = [
-  "/assets/images/necklaces/necklace1_show.jpg",
-  "/assets/images/necklaces/necklace2_show.jpg",
-  "/assets/images/necklaces/necklace3_show.jpg",
-];
-const shoeShow = [
-  "/assets/images/shoes/shoes1_show.jpg",
-  "/assets/images/shoes/shoes2_show.jpg",
-  "/assets/images/shoes/shoes3_show.jpg",
-  "/assets/images/shoes/shoes4_show.jpg",
-  "/assets/images/shoes/shoes5_show.jpg",
-];
-const bggShow = [
-  "/assets/images/background/background1_show.jpg",
-  "/assets/images/background/background2_show.jpg",
-  "/assets/images/background/background3_show.jpg",
-  "/assets/images/background/background4_show.jpg",
-  "/assets/images/background/background5_show.jpg",
-  "/assets/images/background/background6_show.jpg",
-  "/assets/images/background/background7_show.jpg",
-];
+const arrShirtShow = [];
+const arrPantsShow = [];
+const hairStyleShow = [];
+const handbagShow = [];
+const necklaceShow = [];
+const shoeShow = [];
+const bggShow = [];
 //--------------------------------------//
-const arrShirt = [
-  "/assets/images/clothes/topcloth1.png",
-  "/assets/images/clothes/topcloth2.png",
-  "/assets/images/clothes/topcloth3.png",
-  "/assets/images/clothes/topcloth4.png",
-  "/assets/images/clothes/topcloth5.png",
-  "/assets/images/clothes/topcloth6.png",
-];
-const arrPants = [
-  "/assets/images/clothes/botcloth1.png",
-  "/assets/images/clothes/botcloth2.png",
-  "/assets/images/clothes/botcloth3.png",
-  "/assets/images/clothes/botcloth4.png",
-  "/assets/images/clothes/botcloth5.png",
-];
-const hairStyle = [
-  "/assets/images/hairstyle/hairstyle1.png",
-  "/assets/images/hairstyle/hairstyle2.png",
-  "/assets/images/hairstyle/hairstyle3.png",
-];
-const handbag = [
-  "/assets/images/handbags/handbag1.png",
-  "/assets/images/handbags/handbag2.png",
-  "/assets/images/handbags/handbag3.png",
-];
-const necklace = [
-  "/assets/images/necklaces/necklace1.png",
-  "/assets/images/necklaces/necklace2.png",
-  "/assets/images/necklaces/necklace3.png",
-];
-const shoe = [
-  "/assets/images/shoes/shoes1.png",
-  "/assets/images/shoes/shoes2.png",
-  "/assets/images/shoes/shoes3.png",
-  "/assets/images/shoes/shoes4.png",
-  "/assets/images/shoes/shoes5.png",
-];
-const bgg = [
-  "/assets/images/background/background1.jpg",
-  "/assets/images/background/background2.jpg",
-  "/assets/images/background/background3.jpg",
-  "/assets/images/background/background4.jpg",
-  "/assets/images/background/background5.jpg",
-  "/assets/images/background/background6.jpg",
-  "/assets/images/background/background7.jpg",
-];
+const arrShirt = [];
+const arrPants = [];
+const hairStyle = [];
+const handbag = [];
+const necklace = [];
+const shoe = [];
+const bgg = [];
 //--------------------------------//
 const show = [
   arrShirtShow,
@@ -111,3 +33,57 @@ const res = [
   ".feet-img",
   ".background",
 ];
+
+export { itemShow, show, res, promise };
+
+//
+
+function getImgItem(item, types, arr) {
+  let kq = item;
+  let getShirtShow = kq.filter((type) => type.type === types);
+  let res = getShirtShow.map((item, index) => {
+    let find = item.imgSrc_jpg;
+    arr.push(find);
+    return arr;
+  });
+  return res;
+}
+
+function getImgItemRes(item, types, arr) {
+  let kq = item;
+  let getShirtShow = kq.filter((type) => type.type === types);
+  let res = getShirtShow.map((item, index) => {
+    let find = item.imgSrc_png;
+    arr.push(find);
+    return arr;
+  });
+  return res;
+}
+
+const promise = axios({
+  url: "/data/Data.json",
+  method: "get",
+  responseType: "json",
+});
+
+promise.then(function (res) {
+  getImgItem(res.data.tabPanes, "topclothes", arrShirtShow);
+  getImgItem(res.data.tabPanes, "botclothes", arrPantsShow);
+  getImgItem(res.data.tabPanes, "hairstyle", hairStyleShow);
+  getImgItem(res.data.tabPanes, "handbags", handbagShow);
+  getImgItem(res.data.tabPanes, "necklaces", necklaceShow);
+  getImgItem(res.data.tabPanes, "shoes", shoeShow);
+  getImgItem(res.data.tabPanes, "background", bggShow);
+  //
+  getImgItemRes(res.data.tabPanes, "topclothes", arrShirt);
+  getImgItemRes(res.data.tabPanes, "botclothes", arrPants);
+  getImgItemRes(res.data.tabPanes, "hairstyle", hairStyle);
+  getImgItemRes(res.data.tabPanes, "handbags", handbag);
+  getImgItemRes(res.data.tabPanes, "necklaces", necklace);
+  getImgItemRes(res.data.tabPanes, "shoes", shoe);
+  getImgItemRes(res.data.tabPanes, "background", bgg);
+});
+
+promise.catch(function (err) {
+  console.log(err);
+});

@@ -8,6 +8,7 @@ let handleClick = (event, arrItemShow, classRes) => {
   let change = `<img src=${arrItemShow[id]} alt="clother">`;
   resChange.innerHTML = change;
 };
+
 // tạo table card chứa các item tương ứng
 let createItem = (arrShow, arrItem, result) => {
   let output = "";
@@ -31,3 +32,5 @@ let createItem = (arrShow, arrItem, result) => {
     handleClick(event, arrItem, result);
   };
 };
+
+export { handleClick, createItem };

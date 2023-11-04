@@ -4,7 +4,6 @@ let handleClick = (event, arrItemShow, classRes) => {
   //tách chuỗi trong id để lấy số id tương ứng
   const id = button.id.split("-")[1];
   const resChange = document.querySelector(classRes);
-
   let change = `<img src=${arrItemShow[id]} alt="clother">`;
   resChange.innerHTML = change;
 };
